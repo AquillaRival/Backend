@@ -12,24 +12,6 @@ A simple, stateful backend application demonstrating **RESTful API** architectur
 
 ---
 
-## Folder Structure
-This project follows a standard Express pattern separating logic, views, and static assets:
-
-```text
-REST/
-├── node_modules/      # Installed npm packages (managed by npm)
-├── public/            # Static files served directly to the browser
-│   └── style.css      # Custom styling for EJS templates
-├── views/             # EJS template files (The UI layer)
-│   ├── edit.ejs       # Form to update an existing post
-│   ├── index.ejs      # Displays the list of all posts
-│   ├── new.ejs        # Form to create a new post
-│   └── show.ejs       # Displays a single post in detail
-├── index.js           # Main server file containing all routing and CRUD logic
-├── package.json       # Project metadata and dependencies list
-├── package-lock.json  # Exact dependency tree for consistent installs
-└── README.md          # Project documentation
-
 ## The Flow of `index.js` (Server Logic)
 
 The `index.js` file is the heart of this application. It executes in a specific top-to-bottom sequence:
@@ -62,3 +44,21 @@ The `index.js` file is the heart of this application. It executes in a specific 
 * **`req.params`**: Used to extract dynamic routing variables from the URL (e.g., extracting the UUID from `/posts/:id`).
 * **Method-Override**: Since HTML forms natively only support `GET` and `POST`, we use the `method-override` package (`?_method=PATCH` or `DELETE`) to properly implement RESTful update and delete requests.
 * **In-Memory Storage**: Data is temporarily managed via a JavaScript array (`let posts = [...]`). Restarting the server resets the data state.
+
+## Folder Structure
+This project follows a standard Express pattern separating logic, views, and static assets:
+
+```text
+REST/
+├── node_modules/      # Installed npm packages (managed by npm)
+├── public/            # Static files served directly to the browser
+│   └── style.css      # Custom styling for EJS templates
+├── views/             # EJS template files (The UI layer)
+│   ├── edit.ejs       # Form to update an existing post
+│   ├── index.ejs      # Displays the list of all posts
+│   ├── new.ejs        # Form to create a new post
+│   └── show.ejs       # Displays a single post in detail
+├── index.js           # Main server file containing all routing and CRUD logic
+├── package.json       # Project metadata and dependencies list
+├── package-lock.json  # Exact dependency tree for consistent installs
+└── README.md          # Project documentation
