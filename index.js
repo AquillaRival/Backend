@@ -92,9 +92,6 @@ app.patch("/posts/:id", (req, res) => {
     // Post ke purane content ko naye content se replace (update) karna
     post.content = newContent;
     
-    // Console mein updated post dekhna debugging ke liye
-    console.log(post);
-    
     // Update hone ke baad wapas saare posts dikhane ke liye redirect karna
     res.redirect("/posts");
 });
