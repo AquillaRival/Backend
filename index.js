@@ -78,7 +78,20 @@ app.get("/posts/:id", (req, res) => {
     res.render("show.ejs", { post });
 });
 
-// 5. Patch Route: (Update) Specific post ke content ko update karne ke liye
+// 5. Edit Route: specific post ko edit karne ke liye form render karta hai
+app.get("/posts/:id/edit", (req, res) => {
+    // URL parameters se post ki unique ID nikaalna
+    let { id } = req.params;
+    
+    // 'posts' array mein se uss ID wala specific post object dhoondhna
+    let post = posts.find((p) => id === p.id);
+    
+    // 'edit.ejs' file render karna aur usme 'post' ka data pass karna 
+    // taaki form ke andar purana data pehle se bhara hua (pre-filled) dikhe
+    res.render("edit.ejs", { post });
+});
+
+// 6. Patch Route: (Update) Specific post ke content ko update karne ke liye
 app.patch("/posts/:id", (req, res) => {
     // URL se post ki unique ID extract karna
     let { id } = req.params;
@@ -94,19 +107,6 @@ app.patch("/posts/:id", (req, res) => {
     
     // Update hone ke baad wapas saare posts dikhane ke liye redirect karna
     res.redirect("/posts");
-});
-
-// 6. Edit Route: specific post ko edit karne ke liye form render karta hai
-app.get("/posts/:id/edit", (req, res) => {
-    // URL parameters se post ki unique ID nikaalna
-    let { id } = req.params;
-    
-    // 'posts' array mein se uss ID wala specific post object dhoondhna
-    let post = posts.find((p) => id === p.id);
-    
-    // 'edit.ejs' file render karna aur usme 'post' ka data pass karna 
-    // taaki form ke andar purana data pehle se bhara hua (pre-filled) dikhe
-    res.render("edit.ejs", { post });
 });
 
 //7. DELETE route to remove a specific post from the array
