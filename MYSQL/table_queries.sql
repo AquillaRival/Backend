@@ -18,11 +18,16 @@ VALUES
 (3, "casey", 16, "casey234@gmail.com", 300, 824),
 (4, "donald", 17, "donald@zoho.com", 250, 351);
 
-SELECT * FROM user;
-
 CREATE TABLE post (
 	id INT PRIMARY KEY,
     content VARCHAR(100),
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
+
+INSERT INTO post
+(id, content, user_id)
+VALUES
+(101, "Hello World!", 3),
+(102, "Bye Bye", 1),
+(103, "Hello Delta!", 3);
