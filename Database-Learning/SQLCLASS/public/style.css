@@ -1,0 +1,40 @@
+body {
+    /* Modern default fonts */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #1a1a1a; /* Soft black text */
+    padding: 40px;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the table */
+    border-collapse: collapse;
+    background-color: #ffffff; /* Pure white */
+    /* A single clean border around the table */
+    border: 1px solid #dcdcdc; 
+}
+
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    /* Only horizontal borders for a cleaner look */
+    border-bottom: 1px solid #e8e8e8; 
+}
+
+th {
+    background-color: #000000; /* Solid Black */
+    color: #ffffff; /* White text */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* Very subtle grey for alternating rows */
+tr:nth-child(even) {
+    background-color: #fafafa; 
+}
+
+/* Still no hover effects, no shadows! */
