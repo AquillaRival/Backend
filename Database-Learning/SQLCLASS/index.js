@@ -21,71 +21,57 @@ const connection = mysql.createConnection({
 // HOME ROUTE
 app.get("/", (req, res) => {
     let q = `SELECT count(*) FROM user`;
-    try {
-        connection.query(q, (err, result) => {
-                if (err) throw err;
-                let count = result[0]["count(*)"];
-                res.render("home.ejs", { count });
-            }
-        )
-    } catch (err) {
-        console.log(err);
-        res.send("Some error in data base...");
-    }
+    connection.query(q, (err, result) => {
+        if (err) return res.send("Some error in database...");
+        let count = result[0]["count(*)"];
+        res.render("home.ejs", { count });
+    });
 });
 
 // SHOW ROUTE
 app.get("/user", (req, res) => {
     let q = `SELECT * FROM user`;
-    try {
-        connection.query(q, (err, users) => {
-            if (err) throw err;
-            res.render("show.ejs", { users });
-        })
-    } catch (err) {
-        res.send("Some error in database...");
-        console.log(err);
-    }
+    connection.query(q, (err, users) => {
+        if (err) return res.send("Some error in database...");
+        res.render("show.ejs", { users });
+    });
 });
 
+// EDIT ROUTE
 app.get("/user/:id/edit", (req, res) => {
     let q = `SELECT * FROM user WHERE id = ?`;
     let id = req.params.id;
-    try {
-        connection.query(q, [id], (err, result) => {
-            if (err) throw err;
-            let user = result[0];
-            res.render("edit.ejs", { user });
-        })
-    } catch (err) {
-        console.log(err);
-        res.send("Some error in database.");
-    }
-})
+    connection.query(q, [id], (err, result) => {
+        if (err) return res.send("Some error in database.");
+        let user = result[0];
+        if (!user) return res.send("User not found!");
+        res.render("edit.ejs", { user });
+    });
+});
 
+// UPDATE ROUTE
 app.patch("/user/:id", (req, res) => {
     let id = req.params.id;
     let { username: newUsername, password: formPass } = req.body;
     let q = `SELECT * FROM user WHERE id = ?`;
-    try {
-        connection.query(q, [id], (err, result) => {
-            if (err) throw err;
-            let user = result[0];
-            if (formPass != user.password) {
-                res.send("Wrong Password!!!");
-            } else {
-                let updateQuery = `UPDATE user SET username = '${newUsername}' WHERE id = '${id}'`;
-                connection.query(updateQuery, (err, result) => {
-                    if (err) throw err;
-                    res.redirect("/user");
-                })
-            }
-        });
-    } catch (err) {
-        console.log(err);
-        res.send("Some error in database.");
-    }
-})
+    
+    connection.query(q, [id], (err, result) => {
+        if (err) return res.send("Some error in database.");
+        
+        let user = result[0];
+        if (!user) return res.send("User not found!");
+        
+        if (formPass != user.password) {
+            return res.send("Wrong Password!!!");
+        } else {
+            let updateQuery = `UPDATE user SET username = ? WHERE id = ?`;
+            connection.query(updateQuery, [newUsername, id], (err, result) => {
+                if (err) return res.send("Some error in database.");
+                res.redirect("/user");
+            });
+        }
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}...`);
