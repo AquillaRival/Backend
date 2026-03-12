@@ -87,3 +87,31 @@ User.find({})
 .catch((err) => {
     console.log(err);
 }); */
+
+// UPDATE
+/* User.updateOne({name: "Tony"}, {age: 48})
+.then((res) => {
+    console.log(res);
+})
+.catch((err) => {
+    console.log(err);
+}); */
+
+/* User.findOne({name: "Peter"}).updateOne({age: 28})
+.then((res) => {
+    console.log(res);
+})
+.catch((err) => {
+    console.log(err);
+}); */
+
+// Difference between updateOne and findOneAndUpdate (Google it...)
+
+// DELETE
+// User.deleteOne({name: "Adam"})
+// .then((res) => {
+//     console.log(res);
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
