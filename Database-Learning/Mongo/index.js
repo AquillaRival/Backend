@@ -15,3 +15,35 @@ const userSchema = new mongoose.Schema({
     email: String,
     age: Number
 })
+
+const User = mongoose.model("User",userSchema);
+// const Employee = mongoose.model("Employee",userSchema);
+
+// const user1 = new User({
+//     name: "Adam",
+//     email: "adam@yahoo.in",
+//     age: 40
+// })
+
+// const user2 = new User({
+//     name: "Eve",
+//     email: "eve@gmail.com",
+//     age: 36
+// })
+
+const user3 = new User({
+    name: "Shelly",
+    email: "shellu@zoho.com",
+    age: 26
+})
+
+// user2
+//     .save()
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+
+user3.save();
