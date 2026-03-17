@@ -1,0 +1,61 @@
+/* Reset basic styling for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Set the AliceBlue theme on the background */
+body {
+  background-color: aliceblue;
+  color: #333;
+  padding: 30px 20px;
+  max-width: 700px;
+  margin: 0 auto; /* Centers the chat list on the page */
+}
+
+h3 {
+  text-align: center;
+  color: #1a365d;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* Style each chat container as a modern card */
+.chat {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #cce0ff;
+}
+
+/* Style the From/To text */
+.chat p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Make the actual message pop with a slightly darker blue accent */
+.message {
+  background-color: #e6f2ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 5px solid #66a3ff;
+}
+
+.message p {
+  margin-bottom: 0;
+  color: #1a365d;
+  font-size: 1.05rem;
+}
+
+/* Hide the horizontal rule because the card styling creates natural separation */
+hr {
+  display: none;
+}
