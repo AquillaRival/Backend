@@ -19,17 +19,6 @@ async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/chatmodel");
 }
 
-let chat1 = new Chat({
-  from: "Adam",
-  to: "Shelly",
-  message: "Send me your exam sheets",
-  created_at: new Date(),
-});
-
-chat1.save().then((res) => {
-  console.log(res);
-});
-
 app.get("/", (req, res) => {
   res.send("root is working!!!");
 });
