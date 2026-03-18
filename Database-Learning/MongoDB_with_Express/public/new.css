@@ -1,0 +1,130 @@
+/* =========================================
+   GLOBAL STYLES (Applies to all pages)
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: aliceblue;
+  color: #333;
+  padding: 30px 20px;
+  max-width: 700px;
+  margin: 0 auto; /* Yeh page ko center me rakhega */
+}
+
+h3 {
+  text-align: center;
+  color: #1a365d;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+button {
+  background-color: #1a365d;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #2a528a;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* =========================================
+   INDEX.EJS (All Chats Page)
+   ========================================= */
+.chat {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #cce0ff;
+}
+
+.chat p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.message {
+  background-color: #e6f2ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 5px solid #66a3ff;
+}
+
+.message p {
+  margin-bottom: 0;
+  color: #1a365d;
+  font-size: 1.05rem;
+}
+
+hr {
+  display: none;
+}
+
+/* =========================================
+   NEW.EJS (Create Chat Form)
+   ========================================= */
+form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #cce0ff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Bina <br> ke mast spacing aayegi */
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid #e6f2ff;
+  background-color: #f8fbff; /* Halke blue background se inputs aesthetic lagenge */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Jab click karoge toh proper glowing effect aayega */
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #66a3ff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 163, 255, 0.15);
+}
+
+/* Form ke andar wale button ko full width karte hain taaki form balanced lage */
+form button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+}
