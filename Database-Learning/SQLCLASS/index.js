@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'delta_app',
-    password: 'Harshit@2005'
+    database: 'DATABASE',
+    password: 'PASSWORD'
 });
 
 // HOME ROUTE
