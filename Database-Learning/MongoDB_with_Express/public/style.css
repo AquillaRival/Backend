@@ -49,10 +49,11 @@ h3 {
   border-left: 5px solid #66a3ff;
 }
 
-.message p {
+.message div {
   margin-bottom: 0;
   color: #1a365d;
   font-size: 1.05rem;
+  font-weight: 500;
 }
 
 /* Hide the horizontal rule because the card styling creates natural separation */

@@ -20,10 +20,14 @@
       </p>
       <p>To : <%= chat.to %></p>
       <div class="message">
-        <p>
+        <div>
           Message :
           <%= chat.message %>
-        </p>
+          <br />
+          <form method="GET" action="chats/<%= chat._id %>/edit">
+            <button>Edit</button>
+          </form>
+        </div>
       </div>
       <hr />
       <br />
