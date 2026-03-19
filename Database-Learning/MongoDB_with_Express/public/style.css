@@ -22,6 +22,37 @@ h3 {
   font-size: 2rem;
 }
 
+/* --- BUTTON STYLING (Newly Added) --- */
+button {
+  background-color: #1a365d;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #2a528a;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Make the Top "New Chat" button slightly larger */
+form[action="/chats/new"] button {
+  padding: 10px 20px;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+/* --- CHAT CARD STYLING --- */
 /* Style each chat container as a modern card */
 .chat {
   background-color: #ffffff;
@@ -37,9 +68,10 @@ h3 {
   font-size: 0.95rem;
   color: #555;
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* --- MESSAGE BOX STYLING --- */
 /* Make the actual message pop with a slightly darker blue accent */
 .message {
   background-color: #e6f2ff;
@@ -54,6 +86,33 @@ h3 {
   color: #1a365d;
   font-size: 1.05rem;
   font-weight: 500;
+}
+
+/* Align the Edit and Delete buttons side-by-side */
+.message form {
+  display: inline-block;
+  margin-top: 12px;
+  margin-right: 8px;
+}
+
+/* Make the Delete button red for better UI UX */
+form[action*="DELETE"] button {
+  background-color: #dc3545;
+}
+
+form[action*="DELETE"] button:hover {
+  background-color: #c82333;
+}
+
+/* --- METADATA (Timestamps) --- */
+/* Targets the Date and Time <p> tags at the bottom of the card */
+.chat > p:nth-last-of-type(1),
+.chat > p:nth-last-of-type(2) {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: right;
+  margin-bottom: 2px;
+  font-weight: 400;
 }
 
 /* Hide the horizontal rule because the card styling creates natural separation */
