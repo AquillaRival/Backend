@@ -1,54 +1,57 @@
 const express = require("express");
 const app = express();
+const ExpressError = require("./ExpressError");
 
-// app.use("/random", (req, res, next) => {
-//   console.log("Hi, I am middleware.");
-//   //   res.send("Middleware Finished");
-//   next();
-// });
+// TOKEN CHECKING MIDDLEWARE FUNCTION
+const checktoken = (req, res, next) => {
+  let { token } = req.query;
+  if (token === "giveaccess") {
+    return next();
+  }
+  throw new ExpressError(401, "ACCESS DENIED !!!");
+};
 
-// const checkToken = (req, res, next) => {
-//   let { token } = req.query;
-//   if (token === "giveaccess") {
-//     next();
-//   }
-//   throw new Error("Access Denied");
-// };
+// API ROUTE
+app.get("/api", checktoken, (req, res) => {
+  res.send("data");
+});
 
-// app.get("/api", checkToken, (req, res) => {
-//   res.send("Data");
-// });
+// RANDOM ROUTE
+app.get("/random", (req, res) => {
+  res.send("This is random route...");
+});
 
-// app.get("/random", (req, res) => {
-//   res.send("This is random route...");
-// });
+// ROOT ROUTE
+app.get("/", (req, res) => {
+  res.send("Hi, I am root...");
+});
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root...");
-// });
-
-// app.use((req, res) => {
-//   res.send("Page not found!!!");
-// });
-
-// app.listen(8080, () => {
-//   console.log("Listening on port 8080");
-// });
-
-// app.get("/err", (req, res) => {
-//   abcd = abcd;
-// });
-
-// Error Handeling Middlewares...
-
+// ERROR ROUTE
 app.get("/err", (req, res) => {
   abcd = abcd;
 });
 
-app.use((err, req, res, next) => {
-  console.log("--------ERROR---------");
-  next(err);
+// ACTIVITY
+app.get("/admin", (req, res) => {
+  throw new ExpressError(403, "ACCESS FORBIDDEN");
 });
+
+// CUSTOM ERROR HANDELING MIDDLEWARE
+app.use((err, req, res, next) => {
+  let { status = 500, message = "Internal Error!!!" } = err;
+  res.status(status).send(message);
+});
+
+// BASIC ERROR HANDELING MIDDLEWARE
+// app.use((err, req, res, next) => {
+//   console.log("------ ERROR ------");
+//   next(err);
+// });
+
+// CUSTOM NON ERROR HANDELING MIDDLEWARE
+// app.use((req, res) => {
+//   res.status(404).send("Page not found!!!");
+// });
 
 app.listen(8080, () => {
   console.log("Listening on port 8080");
